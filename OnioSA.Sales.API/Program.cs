@@ -11,11 +11,14 @@ namespace OnioSA.Sales.API
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
+
             var conn = builder.Configuration.GetConnectionString("DefaultConnection");
 
             //builder.Services.AddDbContext<SalesDbContext>(o => o.UseInMemoryDatabase("SalesDb"));
 
             builder.Services.AddDbContext<SalesDbContext>(o => o.UseSqlServer(conn));
+
+            builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();

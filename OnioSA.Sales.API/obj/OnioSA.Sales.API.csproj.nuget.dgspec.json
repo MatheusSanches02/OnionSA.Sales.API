@@ -45,9 +45,9 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "dependencies": {
-            "EPPlus": {
+            "Aspose.Cells": {
               "target": "Package",
-              "version": "[7.0.2, )"
+              "version": "[23.11.0, )"
             },
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",

@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\OnioSA.Sales.API.props" />
+</Project>

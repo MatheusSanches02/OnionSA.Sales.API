@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using OnioSA.Sales.API.Entities;
+using System.Reflection.Emit;
 
 namespace OnioSA.Sales.API.Persistence
 {
@@ -20,6 +21,9 @@ namespace OnioSA.Sales.API.Persistence
             {
                 e.HasKey(ped => ped.Id);
 
+                e.Property(ped => ped.Id)
+                   .HasDefaultValueSql("NEWID()");
+
                 e.Property(ped => ped.Documento)
                     .HasMaxLength(20)
                     .HasColumnType("varchar(20)"); 
@@ -37,6 +41,24 @@ namespace OnioSA.Sales.API.Persistence
                     .HasColumnType("varchar(50)");
 
             });
+
+            builder.Entity<Cliente>(e =>
+            {
+                e.HasKey(c => c.Documento);
+            });
+
+
+            builder.Entity<Produto>(e =>
+            {
+                e.HasKey(prod => prod.Id);
+
+                e.Property(prod => prod.Id)
+                    .HasDefaultValueSql("NEWID()");
+
+                e.Property(prod => prod.Valor)
+                    .HasColumnType("decimal(10,2)");
+            });
+                
         }
     }
 }

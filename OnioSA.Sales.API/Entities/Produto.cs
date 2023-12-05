@@ -1,4 +1,5 @@
-﻿namespace OnioSA.Sales.API.Entities
+﻿
+namespace OnioSA.Sales.API.Entities
 {
     public class Produto
     {

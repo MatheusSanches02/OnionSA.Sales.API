@@ -14,14 +14,15 @@ namespace OnioSA.Sales.API.Persistence
         public DbSet<Pedidos> Pedidos { get; set; }
         public DbSet<Produto> Produtos { get; set; }
         public DbSet<Cliente> Cliente { get; set; }
+        public DbSet<Arquivo> Arquivo { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.Entity<Pedidos>(e =>
             {
-                e.HasKey(ped => ped.Id);
+                e.HasKey(ped => ped.CodPedido);
 
-                e.Property(ped => ped.Id)
+                e.Property(ped => ped.CodPedido)
                    .HasDefaultValueSql("NEWID()");
 
                 e.Property(ped => ped.Documento)
@@ -40,6 +41,12 @@ namespace OnioSA.Sales.API.Persistence
                     .HasMaxLength(50)
                     .HasColumnType("varchar(50)");
 
+                e.Property(ped => ped.Prazo)
+                    .IsRequired(false);
+                
+                e.Property(ped => ped.Frete)
+                    .IsRequired(false);
+
             });
 
             builder.Entity<Cliente>(e =>
@@ -50,13 +57,20 @@ namespace OnioSA.Sales.API.Persistence
 
             builder.Entity<Produto>(e =>
             {
-                e.HasKey(prod => prod.Id);
+                e.HasKey(prod => prod.CodProduto);
 
-                e.Property(prod => prod.Id)
+                e.Property(prod => prod.CodProduto)
                     .HasDefaultValueSql("NEWID()");
 
                 e.Property(prod => prod.Valor)
                     .HasColumnType("decimal(10,2)");
+            });
+
+            builder.Entity<Arquivo>(e =>
+            {
+                e.HasKey(arq => arq.CodArquivo);
+                e.Property(arq => arq.CodArquivo)
+                    .HasDefaultValueSql("NEWID()");
             });
                 
         }

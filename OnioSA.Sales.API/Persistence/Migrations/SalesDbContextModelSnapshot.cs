@@ -22,6 +22,37 @@ namespace OnioSA.Sales.API.Persistence.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("OnioSA.Sales.API.Entities.Arquivo", b =>
+                {
+                    b.Property<Guid>("CodArquivo")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier")
+                        .HasDefaultValueSql("NEWID()");
+
+                    b.Property<byte[]>("Arq")
+                        .IsRequired()
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<string>("Extensao")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NomeArquivo")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("TamanhoArquivo")
+                        .HasColumnType("int");
+
+                    b.Property<string>("TipoArquivo")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("CodArquivo");
+
+                    b.ToTable("Arquivo");
+                });
+
             modelBuilder.Entity("OnioSA.Sales.API.Entities.Cliente", b =>
                 {
                     b.Property<string>("Documento")
@@ -34,7 +65,7 @@ namespace OnioSA.Sales.API.Persistence.Migrations
 
             modelBuilder.Entity("OnioSA.Sales.API.Entities.Pedidos", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<Guid>("CodPedido")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier")
                         .HasDefaultValueSql("NEWID()");
@@ -52,7 +83,13 @@ namespace OnioSA.Sales.API.Persistence.Migrations
                         .HasMaxLength(20)
                         .HasColumnType("varchar(20)");
 
+                    b.Property<decimal?>("Frete")
+                        .HasColumnType("decimal(18,2)");
+
                     b.Property<int>("NumPedido")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("Prazo")
                         .HasColumnType("int");
 
                     b.Property<string>("Produto")
@@ -65,14 +102,14 @@ namespace OnioSA.Sales.API.Persistence.Migrations
                         .HasMaxLength(200)
                         .HasColumnType("varchar(200)");
 
-                    b.HasKey("Id");
+                    b.HasKey("CodPedido");
 
                     b.ToTable("Pedidos");
                 });
 
             modelBuilder.Entity("OnioSA.Sales.API.Entities.Produto", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<Guid>("CodProduto")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier")
                         .HasDefaultValueSql("NEWID()");
@@ -84,7 +121,7 @@ namespace OnioSA.Sales.API.Persistence.Migrations
                     b.Property<decimal>("Valor")
                         .HasColumnType("decimal(10,2)");
 
-                    b.HasKey("Id");
+                    b.HasKey("CodProduto");
 
                     b.ToTable("Produtos");
                 });

@@ -12,6 +12,22 @@ namespace OnioSA.Sales.API.Persistence.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "Arquivo",
+                columns: table => new
+                {
+                    CodArquivo = table.Column<Guid>(type: "uniqueidentifier", nullable: false, defaultValueSql: "NEWID()"),
+                    NomeArquivo = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Arq = table.Column<byte[]>(type: "varbinary(max)", nullable: false),
+                    Extensao = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    TipoArquivo = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    TamanhoArquivo = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Arquivo", x => x.CodArquivo);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Cliente",
                 columns: table => new
                 {
@@ -26,36 +42,41 @@ namespace OnioSA.Sales.API.Persistence.Migrations
                 name: "Pedidos",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false, defaultValueSql: "NEWID()"),
+                    CodPedido = table.Column<Guid>(type: "uniqueidentifier", nullable: false, defaultValueSql: "NEWID()"),
                     Documento = table.Column<string>(type: "varchar(20)", maxLength: 20, nullable: false),
                     RazaoSocial = table.Column<string>(type: "varchar(200)", maxLength: 200, nullable: false),
                     CEP = table.Column<string>(type: "varchar(20)", maxLength: 20, nullable: false),
                     Produto = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false),
                     NumPedido = table.Column<int>(type: "int", nullable: false),
-                    Data = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    Data = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Prazo = table.Column<int>(type: "int", nullable: true),
+                    Frete = table.Column<decimal>(type: "decimal(18,2)", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Pedidos", x => x.Id);
+                    table.PrimaryKey("PK_Pedidos", x => x.CodPedido);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Produtos",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false, defaultValueSql: "NEWID()"),
+                    CodProduto = table.Column<Guid>(type: "uniqueidentifier", nullable: false, defaultValueSql: "NEWID()"),
                     Nome = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Valor = table.Column<decimal>(type: "decimal(10,2)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Produtos", x => x.Id);
+                    table.PrimaryKey("PK_Produtos", x => x.CodProduto);
                 });
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "Arquivo");
+
             migrationBuilder.DropTable(
                 name: "Cliente");
 

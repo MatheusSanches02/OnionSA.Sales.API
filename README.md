@@ -48,3 +48,12 @@ Para tratar Json, no meu caso deserializar as informações obtidas no ViaCep:
 ![image](https://github.com/MatheusSanches02/OnionSA.Sales.API/assets/79661325/69e90033-a715-4d87-9da0-8d06aba691c1)
 
 
+Script de criação de produtos no banco de dados:
+
+INSERT INTO Produtos
+(Nome, Valor)
+VALUES 
+  ('Celular', 1000),
+  ('Notebook', 3000),
+  ('Televisão', 5000);
+

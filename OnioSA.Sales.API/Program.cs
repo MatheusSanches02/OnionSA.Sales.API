@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using OnioSA.Sales.API.Persistence;
 using OnioSA.Sales.API.Repository.Arquivos;
+using OnioSA.Sales.API.Repository.Pedidos;
 
 namespace OnioSA.Sales.API
 {
@@ -25,6 +26,7 @@ namespace OnioSA.Sales.API
             builder.Services.AddSwaggerGen();
 
             builder.Services.AddScoped<IArquivosRepository, ArquivosRepository>();
+            builder.Services.AddScoped<IPedidosRepository, PedidosRepository>();
 
             #region [Cors]
             builder.Services.AddCors(c => c.AddPolicy("CorsPolicy", build =>

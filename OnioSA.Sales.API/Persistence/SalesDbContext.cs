@@ -11,14 +11,14 @@ namespace OnioSA.Sales.API.Persistence
             
         }
 
-        public DbSet<Pedidos> Pedidos { get; set; }
+        public DbSet<Pedido> Pedidos { get; set; }
         public DbSet<Produto> Produtos { get; set; }
         public DbSet<Cliente> Cliente { get; set; }
         public DbSet<Arquivo> Arquivo { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            builder.Entity<Pedidos>(e =>
+            builder.Entity<Pedido>(e =>
             {
                 e.HasKey(ped => ped.CodPedido);
 

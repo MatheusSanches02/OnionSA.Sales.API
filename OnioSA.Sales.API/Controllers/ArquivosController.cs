@@ -18,16 +18,17 @@ namespace OnioSA.Sales.API.Controllers
 
 
         [HttpPost("Incluir")]
-        public async Task<IActionResult> InserirArquivo(IFormFile criarArquivo)
+        public async Task<IActionResult> InserirArquivo(IFormFile pedido)
         {
             try
             {
-                if (criarArquivo == null || criarArquivo.Length == 0)
+                if (pedido == null || pedido.Length == 0)
                 {
                     return BadRequest("Objeto criarArquivo é nulo.");
                 }
-                var resultado = await _arquivosRepository.Inserir(criarArquivo);
+                var resultado = await _arquivosRepository.Inserir(pedido);
                 return Ok(resultado);
+                 
             }
             catch (Exception)
             {

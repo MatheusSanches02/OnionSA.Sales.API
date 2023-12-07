@@ -2,6 +2,9 @@
 using Aspose.Cells;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using OnioSA.Sales.API.Entities;
+using OnioSA.Sales.API.Repository.Arquivos;
+using OnioSA.Sales.API.Repository.Pedidos;
 
 namespace OnioSA.Sales.API.Controllers
 {
@@ -9,49 +12,34 @@ namespace OnioSA.Sales.API.Controllers
     [ApiController]
     public class PedidosController : ControllerBase
     {
-        [HttpPost("upload")]
-        public IActionResult UploadFile(IFormFile excelFile)
+        private readonly IPedidosRepository _pedidosRepository;
+        private readonly IArquivosRepository _arquivosRepository;
+
+        public PedidosController(IPedidosRepository pedidosRepository, IArquivosRepository arquivosRepository)
+        {
+            _pedidosRepository = pedidosRepository;
+            _arquivosRepository = arquivosRepository;
+        }
+        [HttpPost("IncluirPedido")]
+        public async Task<IActionResult> IncluirPedido(IFormFile pedido)
         {
             try
             {
-                if (excelFile == null || excelFile.Length == 0)
+                if (pedido == null || pedido.Length == 0)
                 {
                     return BadRequest("Arquivo Excel não fornecido ou vazio.");
                 }
 
+                await _arquivosRepository.Inserir(pedido);
 
-                using (var stream = excelFile.OpenReadStream())
-                {
-                    Workbook wb = new Workbook(stream);
+                var resultado = await _pedidosRepository.Incluir(pedido);
+               
 
-                    WorksheetCollection collection = wb.Worksheets; 
-
-                    for (int worksheetIndex = 0; worksheetIndex < collection.Count; worksheetIndex++)
-                    {
-                        Worksheet worksheet = collection[worksheetIndex];
-
-                        Console.WriteLine("Worksheet: " + worksheet.Name);
-
-                        int rows = worksheet.Cells.MaxDataRow;
-                        int cols = worksheet.Cells.MaxDataColumn;
-
-                        for (int i = 0; i < rows; i++)
-                        {
-
-                            for (int j = 0; j < cols; j++)
-                            {
-                                Console.Write(worksheet.Cells[i, j].Value + " | ");
-                            }
-                            Console.WriteLine(" ");
-                        }
-                    }
-                }
-
-                return Ok("Dados do Excel processados e salvos no banco de dados com sucesso!");
+                return Ok(resultado);
             }
             catch (Exception ex)
             {
-                return BadRequest($"Erro ao processar o arquivo Excel. Detalhes: {ex.Message}");
+                return StatusCode(500, "Erro ao criar arquivo!");
             }
         }
     }

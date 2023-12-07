@@ -1,6 +1,6 @@
 ﻿namespace OnioSA.Sales.API.Entities
 {
-    public class Pedidos
+    public class Pedido
     {
         public Guid CodPedido { get; set; }
         public string Documento { get; set; }

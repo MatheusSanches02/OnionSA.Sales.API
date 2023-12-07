@@ -46,11 +46,13 @@ namespace OnioSA.Sales.API.Persistence.Migrations
                     Documento = table.Column<string>(type: "varchar(20)", maxLength: 20, nullable: false),
                     RazaoSocial = table.Column<string>(type: "varchar(200)", maxLength: 200, nullable: false),
                     CEP = table.Column<string>(type: "varchar(20)", maxLength: 20, nullable: false),
-                    Produto = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false),
+                    Produto = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     NumPedido = table.Column<int>(type: "int", nullable: false),
                     Data = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Prazo = table.Column<int>(type: "int", nullable: true),
-                    Frete = table.Column<decimal>(type: "decimal(18,2)", nullable: true)
+                    Frete = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
+                    Regiao = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ValorProduto = table.Column<decimal>(type: "decimal(10,2)", nullable: true)
                 },
                 constraints: table =>
                 {

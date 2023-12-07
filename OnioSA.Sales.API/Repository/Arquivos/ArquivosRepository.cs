@@ -44,7 +44,8 @@ namespace OnioSA.Sales.API.Repository.Arquivos
         {
             try
             {
-                return Task.FromResult(new ResultadoGenerico(true, "Sucesso ao obter lista de arquivos!"));
+                var listaArquivos = _context.Arquivo.ToList();
+                return Task.FromResult(new ResultadoGenerico(true, "Sucesso ao obter lista de arquivos!", listaArquivos));
             }
             catch (Exception ex)
             {

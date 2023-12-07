@@ -17,7 +17,7 @@ namespace OnioSA.Sales.API.Controllers
         }
 
 
-        [HttpPost("incluir")]
+        [HttpPost("Incluir")]
         public async Task<IActionResult> InserirArquivo(IFormFile criarArquivo)
         {
             try
@@ -32,6 +32,20 @@ namespace OnioSA.Sales.API.Controllers
             catch (Exception)
             {
                 return StatusCode(500, "Erro ao criar arquivo!");
+            }
+        }
+
+        [HttpGet("ObterLista")]
+        public async Task<IActionResult> ObterLista()
+        {
+            try
+            {
+                var resultado = await _arquivosRepository.ObterArquivos();
+                return Ok(resultado);
+            }
+            catch (Exception)
+            {
+                return StatusCode(500, "Erro ao obter arquivos!");
             }
         }
     }

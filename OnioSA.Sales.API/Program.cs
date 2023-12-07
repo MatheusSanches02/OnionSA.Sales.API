@@ -20,12 +20,18 @@ namespace OnioSA.Sales.API
             builder.Services.AddDbContext<SalesDbContext>(o => o.UseSqlServer(conn));
 
             builder.Services.AddControllers();
-            builder.Services.AddCors();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
             builder.Services.AddScoped<IArquivosRepository, ArquivosRepository>();
+
+            #region [Cors]
+            builder.Services.AddCors(c => c.AddPolicy("CorsPolicy", build =>
+            {
+                build.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
+            }));
+            #endregion
 
             var app = builder.Build();
 
@@ -37,6 +43,10 @@ namespace OnioSA.Sales.API
             }
 
             app.UseHttpsRedirection();
+
+            #region [Cors]
+            app.UseCors("CorsPolicy");
+            #endregion
 
             app.UseAuthorization();
 

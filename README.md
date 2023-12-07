@@ -43,4 +43,8 @@ Para leitura de planilhas Excel:
 
 ![image](https://github.com/MatheusSanches02/OnionSA.Sales.API/assets/79661325/143ead82-7ad5-41dc-bf37-201a9eefe42e)
 
+Para tratar Json, no meu caso deserializar as informações obtidas no ViaCep:
+
+![image](https://github.com/MatheusSanches02/OnionSA.Sales.API/assets/79661325/69e90033-a715-4d87-9da0-8d06aba691c1)
+
 

@@ -63,7 +63,7 @@ namespace OnioSA.Sales.API.Persistence.Migrations
                     b.ToTable("Cliente");
                 });
 
-            modelBuilder.Entity("OnioSA.Sales.API.Entities.Pedidos", b =>
+            modelBuilder.Entity("OnioSA.Sales.API.Entities.Pedido", b =>
                 {
                     b.Property<Guid>("CodPedido")
                         .ValueGeneratedOnAdd()
@@ -94,13 +94,18 @@ namespace OnioSA.Sales.API.Persistence.Migrations
 
                     b.Property<string>("Produto")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("varchar(50)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("RazaoSocial")
                         .IsRequired()
                         .HasMaxLength(200)
                         .HasColumnType("varchar(200)");
+
+                    b.Property<string>("Regiao")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal?>("ValorProduto")
+                        .HasColumnType("decimal(10,2)");
 
                     b.HasKey("CodPedido");
 

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "N5CRF+/zfNzvCgBC8K/OWUlsty6UTOveK1TnFffegRm8sZMjP340I+l+szZevGUKevn49itHupclA9x1zWZCEQ==",
+  "dgSpecHash": "sY4G+/0ZoipeWQoecs2sP7lZ4tAJKAQtZ4dD08A7sR5aYk/3zqOxjs71WDJN4nzh41LfpQoN8hr6BNI0PEpMGg==",
   "success": true,
   "projectFilePath": "C:\\Projects\\Pessoal\\OnionSA.Sales.API\\OnioSA.Sales.API\\OnioSA.Sales.API.csproj",
   "expectedPackageFiles": [
@@ -46,6 +46,7 @@
     "C:\\Users\\mathe\\.nuget\\packages\\microsoft.win32.registry\\5.0.0\\microsoft.win32.registry.5.0.0.nupkg.sha512",
     "C:\\Users\\mathe\\.nuget\\packages\\microsoft.win32.systemevents\\5.0.0\\microsoft.win32.systemevents.5.0.0.nupkg.sha512",
     "C:\\Users\\mathe\\.nuget\\packages\\mono.texttemplating\\2.2.1\\mono.texttemplating.2.2.1.nupkg.sha512",
+    "C:\\Users\\mathe\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
     "C:\\Users\\mathe\\.nuget\\packages\\skiasharp\\2.88.6\\skiasharp.2.88.6.nupkg.sha512",
     "C:\\Users\\mathe\\.nuget\\packages\\skiasharp.nativeassets.macos\\2.88.6\\skiasharp.nativeassets.macos.2.88.6.nupkg.sha512",
     "C:\\Users\\mathe\\.nuget\\packages\\skiasharp.nativeassets.win32\\2.88.6\\skiasharp.nativeassets.win32.2.88.6.nupkg.sha512",

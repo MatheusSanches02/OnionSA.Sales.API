@@ -39,7 +39,22 @@ namespace OnioSA.Sales.API.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(500, "Erro ao criar arquivo!");
+                return StatusCode(500, $"Erro ao criar arquivo! {ex}");
+            }
+        }
+
+        [HttpGet("ObterPedidos")]
+        public async Task<IActionResult> ObterPedidos()
+        {
+            try
+            {
+                var resultado = await _pedidosRepository.ObterPedidos();
+
+                return Ok(resultado);
+            }
+            catch (Exception)
+            {
+                return StatusCode(500, "Erro ao obter arquivos!");
             }
         }
     }

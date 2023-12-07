@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "4bdaeJ8IfLf9gjFwRsLaKwK0uWODgftcYKHafi9+F3a0I85zZaqLeXpcbBz7GmczSVYwI7hsy6gb3VK58LCe9A==",
+  "dgSpecHash": "N5CRF+/zfNzvCgBC8K/OWUlsty6UTOveK1TnFffegRm8sZMjP340I+l+szZevGUKevn49itHupclA9x1zWZCEQ==",
   "success": true,
-  "projectFilePath": "C:\\Projects\\OnionSA.Sales\\OnioSA.Sales.API\\OnioSA.Sales.API.csproj",
+  "projectFilePath": "C:\\Projects\\Pessoal\\OnionSA.Sales.API\\OnioSA.Sales.API\\OnioSA.Sales.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\mathe\\.nuget\\packages\\aspose.cells\\23.11.0\\aspose.cells.23.11.0.nupkg.sha512",
     "C:\\Users\\mathe\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",

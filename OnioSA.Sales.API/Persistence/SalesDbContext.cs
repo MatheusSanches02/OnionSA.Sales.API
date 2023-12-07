@@ -37,14 +37,17 @@ namespace OnioSA.Sales.API.Persistence
                     .HasMaxLength(200)
                     .HasColumnType("varchar(200)");
 
-                e.Property(ped => ped.Produto)
-                    .HasMaxLength(50)
-                    .HasColumnType("varchar(50)");
-
                 e.Property(ped => ped.Prazo)
                     .IsRequired(false);
                 
                 e.Property(ped => ped.Frete)
+                    .IsRequired(false); 
+                
+                e.Property(ped => ped.Regiao)
+                    .IsRequired(false);
+                
+                e.Property(ped => ped.ValorProduto)
+                    .HasColumnType("decimal(10,2)")
                     .IsRequired(false);
 
             });
